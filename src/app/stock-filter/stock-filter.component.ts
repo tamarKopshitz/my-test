@@ -32,6 +32,12 @@ export class StockFilterComponent implements OnInit, OnDestroy {
           this.symbolsList.push({ id: symbol.Symbol, name: symbol.Symbol + " " + symbol.Name })
         });
       });
+
+        this.subscribe = this.timer.subscribe(
+          val => {
+            this.store.dispatch(updateStocks())
+          }
+        )
   }
 
   filterChange(filterValue: string) {
@@ -64,13 +70,7 @@ export class StockFilterComponent implements OnInit, OnDestroy {
       this.store.dispatch(getStock({symbol: this.selectedSymbol[0]}));
     }
 
-    if (!this.isTimerSubscribed) {
-      this.subscribe = this.timer.subscribe(
-        val => {
-          this.store.dispatch(updateStocks())
-        }
-      )
-    }
+   
   }
 
   ngOnDestroy(): void {

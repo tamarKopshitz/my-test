@@ -32,7 +32,6 @@ import { storageMetaReducer } from './store/storage.metareducer';
         metaReducers: [storageMetaReducer]
       }
     ),
-    //StoreModule.forRoot(reducer),
     StoreModule.forFeature('Global', reducer),
     EffectsModule.forRoot([GlobalEffects]),
     StoreDevtoolsModule.instrument({

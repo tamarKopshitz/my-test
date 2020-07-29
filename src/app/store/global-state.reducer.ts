@@ -41,9 +41,6 @@ export const getUpdateId = createSelector(getStockState, s => s.updateId);
 export const reducer = createReducer(
   initialStockState,
   on(addStock, (state, { stock }) => {
-    // const updateId = stock.UpdateId;
-    console.log("updateId");
-    //return stockEntitiesAdapter.addOne(stock,);
     const maxUpdate = stock.map(s => s.UpdateId)[0];
     state = stockEntitiesAdapter.addMany(stock, { ...state, updateId: maxUpdate });
     return state;
